@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ekupi.css">
+    <title>E-kupi | Avtomobilska Oprema</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav class="menu">
+                <ul id="menu-list">
+                    <li style="flex-grow:2;"><a href="index.html"> E-KUPI</a></li>
+                    <li><a href="kompjuteri.html">Компјутери</a> </li>
+                    <li><a href="#">Автомобилска опрема</a> </li>
+                    <li><a href="aparatizadomakjinstvo.html">Апарати за домаќинство</a> </li>
+                    <li><a href="elektronika.html">Електроника</a> </li>
+                    <li><a href="domgradinaalati.html">Дом, Градина и Алати</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="aboutus">
+                <div class="top-image">
+                    <img src="./images/top-image-promo.jpg" alt="promotion">
+                </div>
+                <div class="conditions">
+                    <img src="./images/customer.jpg" alt="delivery">
+                </div>
+            </div>
+
+            <div class="computers">
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Патосници</h3>
+                        <ul class="desc">
+                            <li class="desc">Гумени патосници </li>
+                            <li class="desc">Производ на словенечката <br>компанија GLEDRING</li>
+                            <li class="desc"> Изработени од чиста и мека<br> ЕКО гума</li>
+                            <li class="desc">Самата гума е ароматизирана</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/patosnici.jpg" alt="Patosnici">
+                    </div>
+                    <p class="price">1.790 ден</p>
+                    <button data-order="Patosnici">Купи</button>
+                </div>
+
+
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Челична сајла за влечење </h3>
+                        <ul class="desc">
+                            <li class="desc">Teжина на влечење до 5 тони</li>
+                            <li class="desc">3,5м </li>
+                            <li class="desc">Lifetime</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/lajsna_za_vlecenje.jpg " alt="lajsna_za_vlecenje">
+                    </div>
+                    <p class="price">599 ден</p>
+                    <button data-order="lajsna_za_vlecenje">Купи</button>
+                </div>
+
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Раткапни</h3>
+                        <ul class="desc">
+                            <li class="desc">Раткапни Smart 13''к</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/ratkapni.jpg" alt="ratkapni">
+                    </div>
+                    <p class="price">600 ден</p>
+                    <button data-order="ratkapni">Купи</button>
+                </div>
+
+            </div>
+        </main>
+
+        <footer>
+            <p>Our address is:</p>
+            <address style="font-weight: 600;">Mihail Eftihij 62 A Skopje</address>
+            <small>&copy; 2021 E-kupi- All rights reserved</small>
+            <p>Contact us via <a href="mailto:nikolina.cvetkova@gmail.com">e-mail</a></p>
+
+        </footer>
+    </div>
+</body>
+<script>
+    window.addEventListener("DOMContentLoaded", function (e) {
+        const orderButtons = document.querySelectorAll("button[data-order]");
+
+        orderButtons.forEach(function (button) {
+            button.addEventListener("click", function (e) {
+                const button = e.currentTarget;
+                const container = button.parentNode;
+
+                const order = {
+                    id: button.getAttribute("data-order"),
+                    title: container.querySelector(".title").innerText,
+                    desc: container.querySelector(".desc").innerText,
+                    price: container.querySelector(".price").innerText
+
+                };
+
+                localStorage.setItem("order", JSON.stringify(order));
+                const url = window.location.href.replace("avtomobilskaoprema.html", "eorder.html");
+                window.location.href = url;
+            })
+
+
+        })
+
+    })
+
+</script>
+
+</html>

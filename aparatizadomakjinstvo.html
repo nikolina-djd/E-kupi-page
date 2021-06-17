@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ekupi.css">
+    <title>E-kupi | Kompjuteri</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav class="menu">
+                <ul id="menu-list">
+                    <li style="flex-grow:2;"><a href="index.html"> E-KUPI</a></li>
+                    <li><a href="kompjuteri.html">Компјутери</a> </li>
+                    <li><a href="avtomobilskaoprema.html">Автомобилска опрема</a> </li>
+                    <li><a href="#">Апарати за домаќинство</a> </li>
+                    <li><a href="elektronika.html">Електроника</a> </li>
+                    <li><a href="domgradinaalati.html">Дом, Градина и Алати</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="aboutus">
+                <div class="top-image">
+                    <img src="./images/top-image-promo.jpg" alt="promotion">
+                </div>
+                <div class="conditions">
+                    <img src="./images/customer.jpg" alt="delivery">
+                </div>
+            </div>
+
+            <div class="computers">
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Клима Уред</h3>
+                        <ul class="desc">
+                            <li class="desc">Gorenje BS737EX</li>
+                            <li class="desc">Инвертер клима уред</li>
+                            <li class="desc"> А++/A+ енергетска ефикасност</li>
+                            <li class="desc">до -15C инвертер уред</li>
+                            <li class="desc">Капацитет на греење 2,7kW</li>
+                            <li class="desc">Гратис Wi-Fi USB Dongle</li>
+                            <li class="desc">Намена до 30m2 простор</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/klima.jpg" alt="klima">
+                    </div>
+                    <p class="price">18.990 ден</p>
+                    <button data-order="klima">Купи</button>
+                </div>
+
+
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Вградна рерна</h3>
+                        <ul class="desc">
+                            <li class="desc">Gorenje BS737E</li>
+                            <li class="desc">Вид на рерна: Вентилаторска </li>
+                            <li class="desc">Начин на чистење: AquaClean функција </li>
+                            <li class="desc">Капацитет: 71 l</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/furna.jpg " alt="furna">
+                    </div>
+                    <p class="price">16.490 ден</p>
+                    <button data-order="furna">Купи</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Our address is:</p>
+            <address style="font-weight: 600;">Mihail Eftihij 62 A Skopje</address>
+            <small>&copy; 2021 E-kupi- All rights reserved</small>
+            <p>Contact us via <a href="mailto:nikolina.cvetkova@gmail.com">e-mail</a></p>
+        </footer>
+    </div>
+</body>
+<script>
+
+    window.addEventListener("DOMContentLoaded", function (e) {
+        const orderButtons = document.querySelectorAll("button[data-order]");
+
+        orderButtons.forEach(function (button) {
+            button.addEventListener("click", function (e) {
+                const button = e.currentTarget;
+                const container = button.parentNode;
+
+                const order = {
+                    id: button.getAttribute("data-order"),
+                    title: container.querySelector(".title").innerText,
+                    desc: container.querySelector(".desc").innerText,
+                    price: container.querySelector(".price").innerText
+
+                };
+
+                localStorage.setItem("order", JSON.stringify(order));
+                const url = window.location.href.replace("aparatizadomakjinstvo.html", "eorder.html");
+                window.location.href = url;
+            })
+
+
+        })
+
+    })
+
+</script>
+
+</html>

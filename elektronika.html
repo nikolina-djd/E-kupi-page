@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ekupi.css">
+    <title>E-kupi | Kompjuteri</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav class="menu">
+                <ul id="menu-list">
+                    <li style="flex-grow:2;"><a href="index.html"> E-KUPI</a></li>
+                    <li><a href="kompjuteri.html">Компјутери</a> </li>
+                    <li><a href="avtomobilskaoprema.html">Автомобилска опрема</a> </li>
+                    <li><a href="aparatizadomakjinstvo.html">Апарати за домаќинство</a> </li>
+                    <li><a href="#">Електроника</a> </li>
+                    <li><a href="domgradinaalati.html">Дом, Градина и Алати</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="aboutus">
+                <div class="top-image">
+                    <img src="./images/top-image-promo.jpg" alt="promotion">
+                </div>
+                <div class="conditions">
+                    <img src="./images/customer.jpg" alt="delivery">
+                </div>
+            </div>
+
+            <div class="computers">
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Мобилен телефон</h3>
+                        <ul class="desc">
+                            <li class="desc">Samsung Galaxy A12 A125F црн смартфон </li>
+                            <li class="desc">6,5" HD+</li>
+                            <li class="desc">4GB/64GB</li>
+                            <li class="desc">48MP главна камера</li>
+                            <li class="desc">Android 10.0 (Q)</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/mobilen_samsung.jpg" alt="mobilen_samsung">
+                    </div>
+                    <p class="price">10.999 ден</p>
+                    <button data-order="mobilen_samsung">Купи</button>
+                </div>
+
+                
+                <div class="type">
+                    <div class="details">
+                        <h3 class="title">Tелевизор </h3>
+                        <ul class="desc">
+                            <li class="desc">Panasonic TX-55HX710E Smart 55''</li>
+                            <li class="desc">4K HDR Android 9.0</li>
+                            <li class="desc">Дијагонала: 55" / 140 cm</li>
+                            <li class="desc">Резолуција: 3840 x 2160 (4K)</li>
+                            <li class="desc">Технологија: LED Smart</li>
+                            <li class="desc">Тјунер: DVB-T2/C/S</li>
+                        </ul>
+                    </div>
+                    <div class="order">
+                        <img src="./images/televizor.jpg " alt="televizor">
+                    </div>
+                    <p class="price">13.100 ден</p>
+                    <button data-order="televizor">Купи</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Our address is:</p>
+            <address style="font-weight: 600;">Mihail Eftihij 62 A Skopje</address>
+            <small>&copy; 2021 E-kupi- All rights reserved</small>
+            <p>Contact us via <a href="mailto:nikolina.cvetkova@gmail.com">e-mail</a></p>
+        </footer>
+    </div>
+</body>
+<script>
+    
+    window.addEventListener("DOMContentLoaded", function(e){
+    const orderButtons = document.querySelectorAll("button[data-order]");
+     
+    orderButtons.forEach(function(button){
+       button.addEventListener("click", function(e){
+          const button = e.currentTarget;
+          const container = button.parentNode;
+          
+          const order = {
+             id: button.getAttribute("data-order"),
+             title: container.querySelector(".title").innerText,
+             desc: container.querySelector(".desc").innerText,
+             price: container.querySelector(".price").innerText
+             
+          };
+
+          localStorage.setItem("order", JSON.stringify(order));
+          const url = window.location.href.replace("elektronika.html", "eorder.html");
+          window.location.href = url;
+       }) 
+       
+
+    })
+
+ })
+
+</script>
+</html>

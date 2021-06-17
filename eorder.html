@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ekupi.css">
+    <title>E-kupi | Order </title>
+    
+    
+   
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <nav class="menu">
+                <ul id="menu-list">
+                    <li style="flex-grow:2;"><a href="index.html"> E-KUPI</a></li>
+                    <li><a href="kompjuteri.html">Компјутери</a> </li>
+                    <li><a href="avtomobilskaoprema.html">Автомобилска опрема</a> </li>
+                    <li><a href="aparatizadomakjinstvo.html">Апарати за домаќинство</a> </li>
+                    <li><a href="elektronika.html">Електроника</a> </li>
+                    <li><a href="domgradinaalati.html">Дом, Градина и Алати</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="aboutus">
+                <div class="top-image">
+                    <img src="./images/top-image-promo.jpg" alt="promotion">
+                </div>
+                <div class="conditions">
+                    <img src="./images/customer.jpg" alt="delivery">
+                </div>
+            </div>
+
+            <div class="formPage">
+                <h1>Нарачка</h1>
+                <div class="productDetails">
+                    <div class="type">
+                        <div class="details">
+                            <h3 class="title"> </h3>
+                            <ul class="desc">
+                                <li class="desc"></li>
+                                <li class="desc"></li>
+                                <li class="desc"></li>
+                                <li class="desc"></li>
+                                <li class="desc"></li>
+                                <li class="desc"></li>
+                            </ul>
+                        </div>
+                        <div class="order">
+                            <img src="">
+                        </div>
+                        <p class="price"></p>
+                    </div>
+                    <form action="" method="POST">
+                        <input type="hidden" id="comOrder" name="comOrder">
+                        <input type="hidden" id="location" name="location">
+                        <div class="input-group">
+                            <div><label for="first-name">Име</label></div>
+                            <div><input type="text" name="first-name" id="first-name"></div>
+
+                        </div>
+                        <div class="input-group">
+                            <div><label for="last-name">Презиме</label></div>
+                            <div><input type="text" name="last-name" id="last-name"></div>
+                        </div>
+                        <div class="input-group">
+                            <div><label for="address">Адреса</label></div>
+                            <div><input type="text" name="adresa" id="adresa"></div>
+                        </div>
+                        <div class="input-group">
+                            <div><label for="comments">Коментар</label></div>
+                            <div><textarea name="coments" id="" cols="30" rows="10"></textarea></div>
+                        </div>
+
+                        <input type="reset" value="Исчисти">
+                        <input type="submit" value="Нарачај">
+                    </form>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>Our address is:</p>
+            <address style="font-weight: 600;">Mihail Eftihij 62 A Skopje</address>
+            <small>&copy; 2021 E-kupi- All rights reserved</small>
+            <p>Contact us via <a href="mailto:nikolina.cvetkova@gmail.com">e-mail</a></p>
+
+        </footer>
+    </div>
+
+</body>
+
+<script>
+    window.addEventListener("DOMContentLoaded", function (e) {
+        locationBar = document.querySelector("#location");
+        let location = {
+            longitude: "unknown",
+            latitude: "unknown"
+        };
+
+        window.navigator.geolocation.getCurrentPosition (
+            function(position) {
+                location = {
+                    longitude: position.coords.longitude,
+                    latitude: position.coords.latitude
+                };
+                locationBar.value = JSON.stringify(location);
+            },
+            function (error) {
+                locationBar.value = JSON.stringify(location);
+
+            });
+
+
+        const order = localStorage.getItem("order");
+
+        if (order) {
+            const itemOrder = JSON.parse(order);
+
+            /*const comOrder = document.querySelector(".comOrder");
+            comOrder.value = compjuterOrder;*/
+
+            const type = document.querySelector(".type");
+
+            const title = type.querySelector(".title");
+            const desc = type.querySelector(".desc");
+            const price = type.querySelector(".price");
+
+            title.innerText = itemOrder.title;
+            desc.innerText = itemOrder.desc;
+            price.innerText = itemOrder.price;
+
+
+            const img = type.querySelector("img");
+            img.setAttribute("src", `images/${itemOrder.id}.jpg`);
+            img.setAttribute("alt", itemOrder.title);
+
+        }
+    })
+
+</script>
+
+</html>
